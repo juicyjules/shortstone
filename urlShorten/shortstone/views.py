@@ -34,4 +34,4 @@ def slug(request, slug):
         except Url.DoesNotExist:
             url = Url(url=url,slug=slug)
             url.save()
-            return HttpResponse("Slug "+{url.slug}+" has been saved!")
+            return HttpResponse("Slug "+url.slug+" has been saved!")
