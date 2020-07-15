@@ -26,7 +26,9 @@ def slug(request, slug):
         url = request.POST.get("url")
         validate = URLValidator();
         slug = request.POST.get("slug")
-        if not validate(url):
+        try:
+            validate(url):
+        except:
             return render(request, "shortstone/index.html",{"msg":"Your URL is not an URL.","submsg":"How could you, man...","slug":slug})
         if not url:
             return HttpResponse("No Url given",status=400)
