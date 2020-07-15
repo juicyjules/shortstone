@@ -18,7 +18,7 @@ def slug(request, slug):
             url = Url.objects.get(slug=slug)
             return HttpResponseRedirect(url.url)
         except Url.DoesNotExist:
-            return HttpResponseRedirect("/shortstone")
+            return HttpResponse("DoesNotExist")
     elif request.method == "POST":
         url = request.POST.get("url")
         slug = request.POST.get("slug")
