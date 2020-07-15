@@ -14,6 +14,8 @@ def index(request):
 @csrf_exempt
 def slug(request, slug):
     if request.method =="GET":
+        if(slug=="new"):
+            return HttpResponseRedirect("/")
         try:
             url = Url.objects.get(slug=slug)
             return HttpResponseRedirect(url.url)
@@ -26,6 +28,8 @@ def slug(request, slug):
             return HttpResponse("No Url given",status=400)
         if not url.startswith("https://"):
             url = "https://"+url
+        if slug == "new":
+                return HttpResponseRedirect("/")
         if not slug:
             slug = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(5))
         try:
