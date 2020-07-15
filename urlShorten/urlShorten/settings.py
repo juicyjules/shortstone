@@ -25,7 +25,7 @@ SECRET_KEY = 'jhq+(mf3f($-3+%-1yn+-uqypgmt1@tgv_6x14hx8t970vz@m1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False 
 
-ALLOWED_HOSTS = ["short.stonedstreet.de"]
+ALLOWED_HOSTS = ["short.stonedstreet.de","localhost"]
 
 
 # Application definition
