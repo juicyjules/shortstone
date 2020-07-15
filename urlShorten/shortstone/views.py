@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
+from django.core.validators import URLValidator
 import json
 from .models import Url
 from django.db import models
@@ -23,7 +24,10 @@ def slug(request, slug):
             return render(request, "shortstone/index.html",{"msg":"Slug "+slug+" doesn't exist. Be the first to claim it!","submsg":"Or don't, I can't force you.","slug":slug})
     elif request.method == "POST":
         url = request.POST.get("url")
+        validate = URLValidator();
         slug = request.POST.get("slug")
+        if not validate(url):
+            return render(request, "shortstone/index.html",{"msg":"Your URL is not an URL.","submsg":"How could you, man...","slug":slug})
         if not url:
             return HttpResponse("No Url given",status=400)
         if not url.startswith("https://"):
