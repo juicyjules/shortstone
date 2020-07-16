@@ -11,7 +11,7 @@ import string
 # Create your views here.
 def index(request):
 
-    return render(request, "shortstone/index.html",{"msg":"Create a short, easy to remeber slug to any website!", "submsg":"Leave empty for a random slug","slug":""})
+    return render(request, "shortstone/index.html",{"msg":"Create a short, easy to remember slug to any website!", "submsg":"Leave empty for a random slug","slug":""})
 @csrf_exempt
 def slug(request, slug):
     if request.method =="GET":
