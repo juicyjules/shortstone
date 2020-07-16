@@ -27,7 +27,7 @@ def slug(request, slug):
         validate = URLValidator();
         slug = request.POST.get("slug")
         if not url:
-            return HttpResponse("No Url given",status=400)
+                return render(request, "shortstone/index.html",{"msg":"The URL can not be empty!","submsg":"That's not how it works","slug":slug})
         if not url.startswith("https://"):
             url = "https://"+url
         try:
